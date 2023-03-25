@@ -3,8 +3,8 @@ spring:
     name: notes-service
   data:
     mongodb:
-      host: 68.183.72.111
-      port: 27017
       database: notes-service
+      port: 27017
+      host: localhost
   autoconfigure:
     exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
