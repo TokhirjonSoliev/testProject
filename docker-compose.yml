@@ -1,0 +1,41 @@
+networks:
+  notes:
+    driver: bridge
+
+version: '3.7'
+services:
+  ## Mongo Docker Compose Config
+  notes-mongo:
+    image: mongo
+    container_name: notes-service
+    restart: always
+    ports:
+      - "27017:27017"
+    expose:
+      - "27017"
+    volumes:
+      - mongo-data:/var/lib/mongo
+    networks:
+      - notes
+#
+#  ## Product-Service Docker Compose Config
+#  notes-service:
+#    image: notes-service:latest
+#    container_name: notes-service-app
+#    build:
+#      context: .
+#    environment:
+#      - SPRING_DATASOURCE_URL=mongodb://notes-mongo:27017/notes-service
+#    volumes:
+#      - ./build/target/*.jar:/app/notes-service.jar
+#    ports:
+#      - "8080:8080"
+#    expose:
+#      - "8082"
+#    depends_on:
+#      - notes-mongo
+#    networks:
+#      - notes
+
+volumes:
+  mongo-data:
