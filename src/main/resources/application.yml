@@ -6,3 +6,5 @@ spring:
       host: 68.183.72.111
       port: 27017
       database: notes-service
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
