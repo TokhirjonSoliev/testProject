@@ -17,23 +17,25 @@ services:
       - mongo-data:/var/lib/mongo
     networks:
       - notes
-
-  ## Product-Service Docker Compose Config
-  notes-service:
-    image: notes-service:latest
-    container_name: notes-service-app
-    build:
-      context: .
-    environment:
-      - SPRING_DATASOURCE_URL=mongodb://notes-mongo:27017/notes-service
-    ports:
-      - "8080:8080"
-    expose:
-      - "8080"
-    depends_on:
-      - notes-mongo
-    networks:
-      - notes
+#
+#  ## Product-Service Docker Compose Config
+#  notes-service:
+#    image: notes-service:latest
+#    container_name: notes-service-app
+#    build:
+#      context: .
+#    environment:
+#      - SPRING_DATASOURCE_URL=mongodb://notes-mongo:27017/notes-service
+#    volumes:
+#      - ./build/target/*.jar:/app/notes-service.jar
+#    ports:
+#      - "8080:8080"
+#    expose:
+#      - "8082"
+#    depends_on:
+#      - notes-mongo
+#    networks:
+#      - notes
 
 volumes:
   mongo-data:
